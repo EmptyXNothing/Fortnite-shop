@@ -22,7 +22,9 @@ const Items = () => {
 
   return (
     <div>
-      <Button variant="primary" onClick={() => handleVisible()}>Purchases</Button>
+      <div className='d-flex justify-content-center'>
+        <Button className="m-2" variant="primary" onClick={() => handleVisible()}>Purchases</Button>
+      </div>
       <Row xs={1} sm={1} md={2} lg={3} xl={4} xxl={6} className="g-2">
         {items.map((item) => (
           <Item

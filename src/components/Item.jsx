@@ -18,7 +18,7 @@ const Item = ({ name, picture, type, desc, price }) => {
       draggable: true,
       progress: undefined,
       theme: 'light',
-      className: 'p-0 w-[400px] border border-blue-600/40'
+      className: 'p-3 w-[400px] border border-purple-600/40',
     });
   const { addOrder } = useContext(OrderContext);
   const [src, setSrc] = useState(null);
@@ -36,16 +36,14 @@ const Item = ({ name, picture, type, desc, price }) => {
     <Col>
       <Card className="h-100">
         {src ? <Card.Img variant="top" src={src} /> : <Preloader />}
-        <Card.Body className="h-25">
+        <div className="p-2 d-flex flex-column justify-content-between h-100">
           <Card.Title>{name}</Card.Title>
-        </Card.Body>
-        <ListGroup className="list-group-flush h-25">
-          <ListGroup.Item>{desc.length ? desc : 'Нет описания'}</ListGroup.Item>
-          <ListGroup.Item>Тип: {type}</ListGroup.Item>
-          <ListGroup.Item>Цена: {price}VB</ListGroup.Item>
-        </ListGroup>
-        <Card.Body>
-          <Button
+          <span>{desc.length ? desc : 'Нет описания'}</span>
+          <div className='d-flex flex-column'>
+            <span><b>Тип:</b> {type}</span>
+            <span><b>Цена:</b> {price}VB</span>
+            <Button
+            className='w-25 my-2'
             variant="primary"
             onClick={() => {
               addOrder({ name: name, price: price });
@@ -54,7 +52,8 @@ const Item = ({ name, picture, type, desc, price }) => {
           >
             Buy
           </Button>
-        </Card.Body>
+          </div>
+        </div>
       </Card>
     </Col>
   );
