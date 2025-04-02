@@ -39,19 +39,25 @@ const Item = ({ name, picture, type, desc, price }) => {
         <div className="p-2 d-flex flex-column justify-content-between h-100">
           <Card.Title>{name}</Card.Title>
           <span>{desc.length ? desc : 'Нет описания'}</span>
-          <div className='d-flex flex-column'>
-            <span><b>Тип:</b> {type}</span>
-            <span><b>Цена:</b> {price}VB</span>
-            <Button
-            className='w-25 my-2'
-            variant="primary"
-            onClick={() => {
-              addOrder({ name: name, price: price });
-              notify();
-            }}
-          >
-            Buy
-          </Button>
+          <div className="d-flex flex-column">
+            <span>
+              <b>Тип:</b> {type}
+            </span>
+            <span>
+              <b>Цена:</b> {price}VB
+            </span>
+            <div>
+              <Button
+                className="w-auto my-2"
+                variant="primary"
+                onClick={() => {
+                  addOrder({ name: name, price: price });
+                  notify();
+                }}
+              >
+                Buy
+              </Button>
+            </div>
           </div>
         </div>
       </Card>
